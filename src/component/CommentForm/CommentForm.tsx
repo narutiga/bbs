@@ -3,11 +3,12 @@ import { useForm } from "@mantine/form";
 import axios from "axios";
 import requests from "src/lib/Requests";
 
-export type Comment = {
+type Comment = {
   guestName: string;
   title: string;
 };
 
+/** @package */
 export const CommentForm = () => {
   const form = useForm<Comment>({
     initialValues: {
@@ -48,7 +49,7 @@ export const CommentForm = () => {
           {...form.getInputProps("title")}
         />
         <Group position="right" mt="md">
-          <Button type="submit" color="indigo">
+          <Button type="submit" color="lime">
             投稿
           </Button>
         </Group>
