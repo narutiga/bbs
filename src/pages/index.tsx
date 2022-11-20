@@ -1,13 +1,11 @@
-import { Comment } from "src/component/Comment";
-import { Form } from "src/component/Form";
+import { CustomNextPage } from "next";
+import { Index } from "src/pages_component/index";
+import { Layout } from "src/pages_layout/Layout/Layout";
 
-const Home = () => {
-  return (
-    <div>
-      <Form />
-      <Comment gestName="kino" postedAt="2022-11-19" title="テストですよー！" />
-    </div>
-  );
+const IndexPage: CustomNextPage = (props) => {
+  return <Index {...props} />;
 };
 
-export default Home;
+IndexPage.getLayout = Layout;
+
+export default IndexPage;
