@@ -49,7 +49,7 @@ export const CommentForm = () => {
           {...form.getInputProps("title")}
         />
         <Group position="right" mt="md">
-          <Button type="submit" color="lime">
+          <Button type="submit" color="teal.8">
             投稿
           </Button>
         </Group>

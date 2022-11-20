@@ -13,7 +13,7 @@ export const PaginationComponent = (props: {
         page={props.activePage}
         onChange={props.setActivePage}
         total={props.commentCount / 5 + 1}
-        color="lime"
+        color="teal.8"
         withEdges
       />
     </div>

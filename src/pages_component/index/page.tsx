@@ -2,10 +2,9 @@ import axios from "axios";
 import requests from "src/lib/Requests";
 import { CommentCard } from "src/component/CommentCard";
 import { CommentForm } from "src/component/CommentForm";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { NextPage } from "next";
-import { ToggleColorScheme } from "src/component/ToggleColorScheme";
 
 type CommentData = {
   id: string;
@@ -37,7 +36,6 @@ export const Index: NextPage = () => {
 
   return (
     <div className="max-w-lg mr-auto ml-auto">
-      <ToggleColorScheme />
       <CommentForm />
       {commentsPage.map((comment) => {
         return (
