@@ -2,7 +2,7 @@ import axios from "axios";
 import requests from "src/lib/Requests";
 import { CommentCard } from "src/component/CommentCard";
 import { CommentForm } from "src/component/CommentForm";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { NextPage } from "next";
 import { ToggleColorScheme } from "src/component/ToggleColorScheme";
@@ -16,6 +16,7 @@ type CommentData = {
 
 export const Index: NextPage = () => {
   const [comments, setComments] = useState<CommentData[]>([]);
+  const [activePage, setActivePage] = useState<number>(1);
 
   useEffect(() => {
     const getCommentData = () => {
@@ -32,11 +33,13 @@ export const Index: NextPage = () => {
     getCommentData();
   }, []);
 
+  const commentsPage = comments.slice(activePage * 5 - 5, activePage * 5);
+
   return (
     <div className="max-w-lg mr-auto ml-auto">
       <ToggleColorScheme />
       <CommentForm />
-      {comments.map((comment) => {
+      {commentsPage.map((comment) => {
         return (
           <CommentCard
             key={comment.id}
@@ -47,7 +50,11 @@ export const Index: NextPage = () => {
         );
       })}
       <div className="text-center">
-        <PaginationComponent />
+        <PaginationComponent
+          commentCount={comments.length}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
       </div>
     </div>
   );
