@@ -1,5 +1,6 @@
 import { Pagination } from "@mantine/core";
 import { Dispatch, SetStateAction } from "react";
+import { commentsPerPage } from "src/pages_component/index/page";
 
 /** @package */
 export const PaginationComponent = (props: {
@@ -12,7 +13,11 @@ export const PaginationComponent = (props: {
       <Pagination
         page={props.activePage}
         onChange={props.setActivePage}
-        total={props.commentCount / 5 + 1}
+        total={
+          props.commentCount % commentsPerPage === 0
+            ? props.commentCount / commentsPerPage
+            : props.commentCount / commentsPerPage + 1
+        }
         styles={(theme) => ({
           item: {
             "&[data-active]": {
@@ -24,6 +29,7 @@ export const PaginationComponent = (props: {
           },
         })}
         withEdges
+        disabled={props.commentCount < 11 ? true : false}
       />
     </div>
   );

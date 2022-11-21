@@ -13,6 +13,8 @@ type CommentData = {
   createdAt: string;
 };
 
+export const commentsPerPage = 10;
+
 export const Index: NextPage = () => {
   const [comments, setComments] = useState<CommentData[]>([]);
   const [activePage, setActivePage] = useState<number>(1);
@@ -31,7 +33,10 @@ export const Index: NextPage = () => {
     getCommentData();
   }, []);
 
-  const commentsPage = comments.slice(activePage * 5 - 5, activePage * 5);
+  const commentsPage = comments.slice(
+    activePage * commentsPerPage - commentsPerPage,
+    activePage * commentsPerPage
+  );
 
   return (
     <div className="max-w-xs sm:max-w-lg mr-auto ml-auto">
