@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import { useState } from "react";
 import type { CustomAppPage } from "next/app";
 import {
   MantineProvider,
