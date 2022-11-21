@@ -10,7 +10,7 @@ type CommentData = {
   id: string;
   title: string;
   guestName: string;
-  posted_at: string;
+  createdAt: string;
 };
 
 export const Index: NextPage = () => {
@@ -23,7 +23,6 @@ export const Index: NextPage = () => {
         .get(requests.fetchCommentData)
         .then((res) => {
           setComments(res.data);
-          console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -35,14 +34,14 @@ export const Index: NextPage = () => {
   const commentsPage = comments.slice(activePage * 5 - 5, activePage * 5);
 
   return (
-    <div className="max-w-lg mr-auto ml-auto">
+    <div className="max-w-xs sm:max-w-lg mr-auto ml-auto">
       <CommentForm />
       {commentsPage.map((comment) => {
         return (
           <CommentCard
             key={comment.id}
             guestName={comment.guestName}
-            postedAt={comment.posted_at}
+            postedAt={comment.createdAt}
             title={comment.title}
           />
         );
