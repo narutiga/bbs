@@ -2,7 +2,6 @@ import { FC } from "react";
 import Link from "next/link";
 import { createStyles, Header, Container, Text } from "@mantine/core";
 import { ToggleColorScheme } from "src/component/ToggleColorScheme";
-import Image from "next/image";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -26,13 +25,12 @@ export const HeaderMenu: FC = () => {
       <Container size={3000} px={20} className={classes.header}>
         <Link href="/" className="no-underline">
           <div className="flex hover:cursor-pointer">
-            <h1 className="my-auto font-semibold text-xl md:text-2xl">
+            <h1 className="my-auto font-semibold text-2xl md:text-3xl">
               <Text
                 variant="gradient"
                 gradient={{ from: "indigo.3", to: "cyan.3", deg: 45 }}
                 sx={{ fontFamily: "Greycliff CF, sans-serif" }}
                 ta="center"
-                // fz="xl"
                 fw={700}
               >
                 掲示板のようなもの

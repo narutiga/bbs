@@ -10,7 +10,7 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[0],
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.cyan[3]
+        ? theme.colors.cyan[2]
         : theme.colors.indigo[4],
     borderTop: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
@@ -18,8 +18,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   inner: {
-    // display: "flex",
-    // justifyContent: "space-between",
     alignItems: "center",
     paddingTop: theme.spacing.xl,
     paddingBottom: theme.spacing.xl,

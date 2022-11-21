@@ -13,7 +13,16 @@ export const PaginationComponent = (props: {
         page={props.activePage}
         onChange={props.setActivePage}
         total={props.commentCount / 5 + 1}
-        color="teal.8"
+        styles={(theme) => ({
+          item: {
+            "&[data-active]": {
+              backgroundImage: theme.fn.gradient({
+                from: "cyan.3",
+                to: "indigo.3",
+              }),
+            },
+          },
+        })}
         withEdges
       />
     </div>

@@ -17,7 +17,7 @@ export const ToggleColorScheme = () => {
               : theme.colors.gray[0],
           color:
             theme.colorScheme === "dark"
-              ? theme.colors.cyan[3]
+              ? theme.colors.cyan[2]
               : theme.colors.indigo[4],
         })}
       >
