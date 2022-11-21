@@ -4,6 +4,7 @@ import { createStyles, Container } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
   footer: {
     width: "100%",
+    marginTop: "20px",
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
