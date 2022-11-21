@@ -1,4 +1,4 @@
-import { Text, TypographyStylesProvider, Paper } from "@mantine/core";
+import { Text, Paper, useMantineColorScheme } from "@mantine/core";
 import { FC } from "react";
 
 type CommentProps = {
@@ -9,19 +9,21 @@ type CommentProps = {
 
 /** @package */
 export const CommentCard: FC<CommentProps> = (props) => {
+  const { colorScheme } = useMantineColorScheme();
+
   return (
     <Paper withBorder radius="md" className="py-4 px-8 mb-4">
       <div className="flex justify-between mb-4">
-        <Text size="sm" color="teal.2">
+        <Text size="sm" color={colorScheme === "dark" ? "cyan.2" : "indigo.4"}>
           {props.guestName}
         </Text>
-        <Text size="xs" color="dimmed">
+        <Text size="sm" color="dimmed">
           {props.postedAt}
         </Text>
       </div>
-      <TypographyStylesProvider>
-        <div dangerouslySetInnerHTML={{ __html: props.title }} />
-      </TypographyStylesProvider>
+      <Text color={colorScheme === "dark" ? "gray.4" : "gray.7"}>
+        {props.title}
+      </Text>
     </Paper>
   );
 };

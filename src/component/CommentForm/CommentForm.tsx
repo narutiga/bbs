@@ -29,12 +29,11 @@ export const CommentForm = () => {
       guestName: value.guestName,
       title: value.title,
     });
-    console.log(value);
     form.reset();
   };
 
   return (
-    <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto">
+    <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto" mt="0">
       <form onSubmit={form.onSubmit(handleSubmitComment)}>
         <TextInput
           required
@@ -49,7 +48,11 @@ export const CommentForm = () => {
           {...form.getInputProps("title")}
         />
         <Group position="right" mt="md">
-          <Button type="submit" color="teal.8">
+          <Button
+            type="submit"
+            variant="gradient"
+            gradient={{ from: "indigo.3", to: "cyan.3" }}
+          >
             投稿
           </Button>
         </Group>
