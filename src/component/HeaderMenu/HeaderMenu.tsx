@@ -25,7 +25,7 @@ export const HeaderMenu: FC = () => {
       <Container size={3000} px={20} className={classes.header}>
         <Link href="/" className="no-underline">
           <div className="flex hover:cursor-pointer">
-            <h1 className="my-auto font-semibold text-2xl md:text-3xl">
+            <h1 className="my-auto ml-0 md:ml-4 font-semibold text-2xl md:text-3xl">
               <Text
                 variant="gradient"
                 gradient={{ from: "indigo.3", to: "cyan.3", deg: 45 }}

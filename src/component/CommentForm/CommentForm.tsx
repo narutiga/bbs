@@ -45,6 +45,8 @@ export const CommentForm = () => {
           required
           label="コメント"
           placeholder="comment"
+          autosize
+          minRows={2}
           {...form.getInputProps("title")}
         />
         <Group position="right" mt="md">

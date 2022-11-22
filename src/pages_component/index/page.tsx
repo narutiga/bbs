@@ -39,7 +39,7 @@ export const Index: NextPage = () => {
   );
 
   return (
-    <div className="max-w-xs sm:max-w-lg mr-auto ml-auto">
+    <div className="w-4/5 max-w-lg mr-auto ml-auto">
       <CommentForm />
       {commentsPage.map((comment) => {
         return (
