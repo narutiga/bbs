@@ -53,7 +53,7 @@ export const Index: NextPage = () => {
       })}
       <div className="text-center">
         <PaginationComponent
-          commentCount={comments.length}
+          commentsCount={comments.length}
           activePage={activePage}
           setActivePage={setActivePage}
         />

@@ -4,7 +4,7 @@ import { commentsPerPage } from "src/pages_component/index/page";
 
 /** @package */
 export const PaginationComponent = (props: {
-  commentCount: number;
+  commentsCount: number;
   activePage: number;
   setActivePage: Dispatch<SetStateAction<number>>;
 }) => {
@@ -14,9 +14,9 @@ export const PaginationComponent = (props: {
         page={props.activePage}
         onChange={props.setActivePage}
         total={
-          props.commentCount % commentsPerPage === 0
-            ? props.commentCount / commentsPerPage
-            : props.commentCount / commentsPerPage + 1
+          props.commentsCount % commentsPerPage === 0
+            ? props.commentsCount / commentsPerPage
+            : Math.floor(props.commentsCount / commentsPerPage) + 1
         }
         styles={(theme) => ({
           item: {
@@ -29,7 +29,6 @@ export const PaginationComponent = (props: {
           },
         })}
         withEdges
-        disabled={props.commentCount < 11 ? true : false}
       />
     </div>
   );
