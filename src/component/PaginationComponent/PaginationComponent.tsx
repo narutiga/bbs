@@ -20,6 +20,7 @@ export const PaginationComponent: FC<Props> = (props) => {
             ? props.messagesCount / messagesPerPage
             : Math.floor(props.messagesCount / messagesPerPage) + 1
         }
+        position="center"
         styles={(theme) => ({
           item: {
             "&[data-active]": {

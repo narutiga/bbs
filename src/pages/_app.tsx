@@ -11,7 +11,7 @@ import Head from "next/head";
 const App: CustomAppPage = ({ Component, pageProps }) => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "color-scheme",
-    defaultValue: "light",
+    defaultValue: "dark",
     getInitialValueInEffect: true,
   });
 
