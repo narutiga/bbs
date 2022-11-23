@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
+import { NextPage } from "next";
 import axios from "axios";
 import requests from "src/lib/Requests";
-import { MessageCard } from "src/component/MessageCard";
 import { MessageForm } from "src/component/MessageForm";
-import { useEffect, useMemo, useState } from "react";
+import { MessageCard } from "src/component/MessageCard";
 import { PaginationComponent } from "src/component/PaginationComponent";
-import { NextPage } from "next";
 
 /** @package */
 export type MessageData = {
@@ -36,7 +36,7 @@ export const Index: NextPage = () => {
     getMessageData();
   }, []);
 
-  const commentsPage = messages.slice(
+  const displayMessages = messages.slice(
     activePage * messagesPerPage - messagesPerPage,
     activePage * messagesPerPage
   );
@@ -44,13 +44,13 @@ export const Index: NextPage = () => {
   return (
     <div className="w-4/5 max-w-lg mr-auto ml-auto">
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
-      {commentsPage.map((comment) => {
+      {displayMessages.map((message) => {
         return (
           <MessageCard
-            key={comment.id}
-            guestName={comment.guestName}
-            postedAt={comment.createdAt}
-            title={comment.title}
+            key={message.id}
+            guestName={message.guestName}
+            postedAt={message.createdAt}
+            title={message.title}
           />
         );
       })}

@@ -1,6 +1,6 @@
-import { Pagination } from "@mantine/core";
 import { Dispatch, FC, SetStateAction } from "react";
 import { messagesPerPage } from "src/pages_component/index/page";
+import { Pagination } from "@mantine/core";
 
 type Props = {
   messagesCount: number;
