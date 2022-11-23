@@ -3,13 +3,25 @@ import { FC } from "react";
 
 type Props = {
   guestName: string;
-  postedAt: string;
+  postedAt: Date;
   title: string;
+};
+
+const formatDate = (date: Date) => {
+  const newDate = new Date(date);
+  const year = newDate.getFullYear();
+  const month = newDate.getMonth() + 1;
+  const day = newDate.getDate();
+
+  const hour = (`0` + newDate.getHours()).slice(-2);
+  const minute = (`0` + newDate.getMinutes()).slice(-2);
+  return `${year}-${month}-${day} ${hour}:${minute}`;
 };
 
 /** @package */
 export const CommentCard: FC<Props> = (props) => {
   const { colorScheme } = useMantineColorScheme();
+  const formattedDate = formatDate(props.postedAt);
 
   return (
     <Paper withBorder radius="md" className="py-4 px-8 mb-4">
@@ -18,7 +30,7 @@ export const CommentCard: FC<Props> = (props) => {
           {props.guestName}
         </Text>
         <Text size="sm" color="dimmed">
-          {props.postedAt}
+          {formattedDate}
         </Text>
       </div>
       <Text color={colorScheme === "dark" ? "gray.4" : "gray.7"}>

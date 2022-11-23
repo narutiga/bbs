@@ -11,7 +11,7 @@ export type MessageData = {
   id: string;
   title: string;
   guestName: string;
-  createdAt: string;
+  createdAt: Date;
 };
 
 /** @package */
