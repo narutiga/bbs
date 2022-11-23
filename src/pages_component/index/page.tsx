@@ -1,7 +1,7 @@
 import axios from "axios";
 import requests from "src/lib/Requests";
-import { CommentCard } from "src/component/CommentCard";
-import { CommentForm } from "src/component/CommentForm";
+import { MessageCard } from "src/component/MessageCard";
+import { MessageForm } from "src/component/MessageForm";
 import { useEffect, useMemo, useState } from "react";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { NextPage } from "next";
@@ -43,10 +43,10 @@ export const Index: NextPage = () => {
 
   return (
     <div className="w-4/5 max-w-lg mr-auto ml-auto">
-      <CommentForm setMessages={setMessages} />
+      <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
       {commentsPage.map((comment) => {
         return (
-          <CommentCard
+          <MessageCard
             key={comment.id}
             guestName={comment.guestName}
             postedAt={comment.createdAt}
