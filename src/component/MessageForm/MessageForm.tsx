@@ -18,7 +18,6 @@ type Props = {
 
 /** @package */
 export const MessageForm: FC<Props> = (props) => {
-  const test = localStorage.getItem("guest-name");
   const [storagedName, setStoragedName] = useLocalStorage<string>({
     key: "guest-name",
     defaultValue: "",
