@@ -4,6 +4,7 @@ import requests from "src/lib/Requests";
 import { MessageData } from "src/pages_component/index/page";
 import { Box, Button, Group, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useLocalStorage } from "@mantine/hooks";
 
 type Message = {
   guestName: string;
@@ -17,15 +18,21 @@ type Props = {
 
 /** @package */
 export const MessageForm: FC<Props> = (props) => {
+  const test = localStorage.getItem("guest-name");
+  const [storagedName, setStoragedName] = useLocalStorage<string>({
+    key: "guest-name",
+    defaultValue: "",
+  });
+
   const form = useForm<Message>({
     initialValues: {
-      guestName: "",
+      guestName: storagedName,
       title: "",
     },
 
     validate: {
       guestName: (value) =>
-        value.length > 8 ? "名前は8文字以内で入力してください" : null,
+        value.length > 11 ? "名前は10文字以内で入力してください" : null,
       title: (value) =>
         value.length < 1
           ? "コメントを入力してください"
@@ -36,6 +43,7 @@ export const MessageForm: FC<Props> = (props) => {
   });
 
   const handleSubmitMessage = (value: Message) => {
+    setStoragedName(value.guestName);
     axios
       .post(requests.InsertCommentData, {
         guestName: value.guestName,
