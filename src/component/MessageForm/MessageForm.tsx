@@ -4,6 +4,7 @@ import requests from "src/lib/Requests";
 import { MessageData } from "src/pages_component/index/page";
 import { Box, Button, Group, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useLocalStorage } from "@mantine/hooks";
 
 type Message = {
   guestName: string;
@@ -12,19 +13,25 @@ type Message = {
 
 type Props = {
   setMessages: Dispatch<SetStateAction<MessageData[]>>;
+  setActivePage: Dispatch<SetStateAction<number>>;
 };
 
 /** @package */
-export const CommentForm: FC<Props> = (props) => {
+export const MessageForm: FC<Props> = (props) => {
+  const [storagedName, setStoragedName] = useLocalStorage<string>({
+    key: "guest-name",
+    defaultValue: "",
+  });
+
   const form = useForm<Message>({
     initialValues: {
-      guestName: "",
+      guestName: storagedName,
       title: "",
     },
 
     validate: {
       guestName: (value) =>
-        value.length > 16 ? "名前は15文字以内で入力してください" : null,
+        value.length > 11 ? "名前は10文字以内で入力してください" : null,
       title: (value) =>
         value.length < 1
           ? "コメントを入力してください"
@@ -35,6 +42,7 @@ export const CommentForm: FC<Props> = (props) => {
   });
 
   const handleSubmitMessage = (value: Message) => {
+    setStoragedName(value.guestName);
     axios
       .post(requests.InsertCommentData, {
         guestName: value.guestName,
@@ -42,6 +50,7 @@ export const CommentForm: FC<Props> = (props) => {
       })
       .then((res) => {
         props.setMessages(res.data);
+        props.setActivePage(1);
       })
       .catch((error) => {
         console.log(error);

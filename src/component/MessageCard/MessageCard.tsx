@@ -19,12 +19,12 @@ const formatDate = (date: Date) => {
 };
 
 /** @package */
-export const CommentCard: FC<Props> = (props) => {
+export const MessageCard: FC<Props> = (props) => {
   const { colorScheme } = useMantineColorScheme();
   const formattedDate = formatDate(props.postedAt);
 
   return (
-    <Paper withBorder radius="md" className="py-4 px-8 mb-4">
+    <Paper withBorder radius="md" className="py-4 px-4 md:px-8 mb-4">
       <div className="flex justify-between mb-4">
         <Text size="sm" color={colorScheme === "dark" ? "cyan.2" : "indigo.4"}>
           {props.guestName}
@@ -33,7 +33,10 @@ export const CommentCard: FC<Props> = (props) => {
           {formattedDate}
         </Text>
       </div>
-      <Text color={colorScheme === "dark" ? "gray.4" : "gray.7"}>
+      <Text
+        className="whitespace-pre-line"
+        color={colorScheme === "dark" ? "gray.4" : "gray.7"}
+      >
         {props.title}
       </Text>
     </Paper>
