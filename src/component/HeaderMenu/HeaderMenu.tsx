@@ -20,6 +20,7 @@ const useStyles = createStyles((theme) => ({
 /** @package */
 export const HeaderMenu: FC = () => {
   const { classes } = useStyles();
+
   return (
     <Header height={80} className=" px-0 w-full sticky top-0 z-50">
       <Container size={3000} px={20} className={classes.header}>

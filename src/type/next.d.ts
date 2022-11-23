@@ -4,7 +4,7 @@ import { AppProps } from "next/app";
 type PageAttributes = { getLayout?: (page: ReactElement) => JSX.Element };
 
 declare module "next" {
-  type CustomLayout = NonNullable<PageAttrigutes["getLayout"]>;
+  type CustomLayout = NonNullable<PageAttributes["getLayout"]>;
   type CustomNextPage<P = Record<string, unknown>, IP = P> = NextPage<P, IP> &
     PageAttributes;
 }

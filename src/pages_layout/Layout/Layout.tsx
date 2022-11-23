@@ -1,10 +1,9 @@
 import { CustomLayout } from "next";
-import { Footer } from "src/component/Footer";
 import { HeaderMenu } from "src/component/HeaderMenu";
-import { PaginationComponent } from "src/component/PaginationComponent";
+import { Footer } from "src/component/Footer";
 
 /** @package */
-export const Layout: CustomLayout = (page: any) => {
+export const Layout: CustomLayout = (page) => {
   return (
     <div className="flex min-h-screen flex-col">
       <HeaderMenu />

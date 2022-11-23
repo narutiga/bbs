@@ -1,1 +1,1 @@
-export { Index } from "./page";
+export { Index, commentsPerPage } from "./page";

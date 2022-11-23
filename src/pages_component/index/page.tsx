@@ -6,17 +6,19 @@ import { useEffect, useState } from "react";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { NextPage } from "next";
 
-type CommentData = {
+type MessageData = {
   id: string;
   title: string;
   guestName: string;
   createdAt: string;
 };
 
+/** @package */
 export const commentsPerPage = 10;
 
+/** @package */
 export const Index: NextPage = () => {
-  const [comments, setComments] = useState<CommentData[]>([]);
+  const [messages, setMessages] = useState<MessageData[]>([]);
   const [activePage, setActivePage] = useState<number>(1);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export const Index: NextPage = () => {
       axios
         .get(requests.fetchCommentData)
         .then((res) => {
-          setComments(res.data);
+          setMessages(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -33,7 +35,7 @@ export const Index: NextPage = () => {
     getCommentData();
   }, []);
 
-  const commentsPage = comments.slice(
+  const commentsPage = messages.slice(
     activePage * commentsPerPage - commentsPerPage,
     activePage * commentsPerPage
   );
@@ -53,7 +55,7 @@ export const Index: NextPage = () => {
       })}
       <div className="text-center">
         <PaginationComponent
-          commentsCount={comments.length}
+          messagesCount={messages.length}
           activePage={activePage}
           setActivePage={setActivePage}
         />
