@@ -1,9 +1,9 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import axios from "axios";
 import requests from "src/lib/Requests";
+import { MessageData } from "src/pages_component/index/page";
 import { Box, Button, Group, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { MessageData } from "src/pages_component/index/page";
 
 type Message = {
   guestName: string;
@@ -56,6 +56,7 @@ export const CommentForm: FC<Props> = (props) => {
           required
           label="お名前"
           placeholder="name"
+          size="md"
           {...form.getInputProps("guestName")}
         />
         <Textarea
@@ -64,6 +65,7 @@ export const CommentForm: FC<Props> = (props) => {
           placeholder="comment"
           autosize
           minRows={2}
+          size="md"
           {...form.getInputProps("title")}
         />
         <Group position="right" mt="md">
