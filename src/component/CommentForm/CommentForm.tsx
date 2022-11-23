@@ -24,11 +24,7 @@ export const CommentForm: FC<Props> = (props) => {
 
     validate: {
       guestName: (value) =>
-        value.length < 2
-          ? "名前は２文字以上で入力してください"
-          : value.length > 16
-          ? "名前は15文字以内で入力してください"
-          : null,
+        value.length > 16 ? "名前は15文字以内で入力してください" : null,
       title: (value) =>
         value.length < 1
           ? "コメントを入力してください"
