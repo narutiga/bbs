@@ -22,9 +22,9 @@ export const ToggleColorScheme = () => {
         })}
       >
         {colorScheme === "dark" ? (
-          <IconSun size={18} />
+          <IconSun size={20} />
         ) : (
-          <IconMoonStars size={18} />
+          <IconMoonStars size={20} />
         )}
       </ActionIcon>
     </Group>

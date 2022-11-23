@@ -1,6 +1,6 @@
 import { Pagination } from "@mantine/core";
 import { Dispatch, FC, SetStateAction } from "react";
-import { commentsPerPage } from "src/pages_component/index/page";
+import { messagesPerPage } from "src/pages_component/index/page";
 
 type Props = {
   messagesCount: number;
@@ -16,9 +16,9 @@ export const PaginationComponent: FC<Props> = (props) => {
         page={props.activePage}
         onChange={props.setActivePage}
         total={
-          props.messagesCount % commentsPerPage === 0
-            ? props.messagesCount / commentsPerPage
-            : Math.floor(props.messagesCount / commentsPerPage) + 1
+          props.messagesCount % messagesPerPage === 0
+            ? props.messagesCount / messagesPerPage
+            : Math.floor(props.messagesCount / messagesPerPage) + 1
         }
         styles={(theme) => ({
           item: {

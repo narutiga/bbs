@@ -1,16 +1,21 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import axios from "axios";
 import requests from "src/lib/Requests";
 import { Box, Button, Group, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { MessageData } from "src/pages_component/index/page";
 
 type Message = {
   guestName: string;
   title: string;
 };
 
+type Props = {
+  setMessages: Dispatch<SetStateAction<MessageData[]>>;
+};
+
 /** @package */
-export const CommentForm: FC = () => {
+export const CommentForm: FC<Props> = (props) => {
   const form = useForm<Message>({
     initialValues: {
       guestName: "",
@@ -34,10 +39,17 @@ export const CommentForm: FC = () => {
   });
 
   const handleSubmitMessage = (value: Message) => {
-    axios.post(requests.InsertCommentData, {
-      guestName: value.guestName,
-      title: value.title,
-    });
+    axios
+      .post(requests.InsertCommentData, {
+        guestName: value.guestName,
+        title: value.title,
+      })
+      .then((res) => {
+        props.setMessages(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     form.reset();
   };
 

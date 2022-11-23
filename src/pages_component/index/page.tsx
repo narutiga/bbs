@@ -2,11 +2,12 @@ import axios from "axios";
 import requests from "src/lib/Requests";
 import { CommentCard } from "src/component/CommentCard";
 import { CommentForm } from "src/component/CommentForm";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { NextPage } from "next";
 
-type MessageData = {
+/** @package */
+export type MessageData = {
   id: string;
   title: string;
   guestName: string;
@@ -14,7 +15,7 @@ type MessageData = {
 };
 
 /** @package */
-export const commentsPerPage = 10;
+export const messagesPerPage = 10;
 
 /** @package */
 export const Index: NextPage = () => {
@@ -22,7 +23,7 @@ export const Index: NextPage = () => {
   const [activePage, setActivePage] = useState<number>(1);
 
   useEffect(() => {
-    const getCommentData = () => {
+    const getMessageData = () => {
       axios
         .get(requests.fetchCommentData)
         .then((res) => {
@@ -32,17 +33,17 @@ export const Index: NextPage = () => {
           console.log(error);
         });
     };
-    getCommentData();
+    getMessageData();
   }, []);
 
   const commentsPage = messages.slice(
-    activePage * commentsPerPage - commentsPerPage,
-    activePage * commentsPerPage
+    activePage * messagesPerPage - messagesPerPage,
+    activePage * messagesPerPage
   );
 
   return (
     <div className="w-4/5 max-w-lg mr-auto ml-auto">
-      <CommentForm />
+      <CommentForm setMessages={setMessages} />
       {commentsPage.map((comment) => {
         return (
           <CommentCard
