@@ -1,14 +1,14 @@
 import { Text, Paper, useMantineColorScheme } from "@mantine/core";
 import { FC } from "react";
 
-type CommentProps = {
+type Props = {
   guestName: string;
   postedAt: string;
   title: string;
 };
 
 /** @package */
-export const CommentCard: FC<CommentProps> = (props) => {
+export const CommentCard: FC<Props> = (props) => {
   const { colorScheme } = useMantineColorScheme();
 
   return (
