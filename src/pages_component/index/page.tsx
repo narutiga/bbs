@@ -5,6 +5,8 @@ import requests from "src/lib/Requests";
 import { MessageForm } from "src/component/MessageForm";
 import { MessageCard } from "src/component/MessageCard";
 import { PaginationComponent } from "src/component/PaginationComponent";
+import { Button, Group } from "@mantine/core";
+import { IconRefresh } from "@tabler/icons";
 
 /** @package */
 export type MessageData = {
@@ -42,8 +44,18 @@ export const Index: NextPage = () => {
   );
 
   return (
-    <div className="w-4/5 max-w-lg mr-auto ml-auto">
+    <div className="px-4 w-5/6 md:w-4/5 min-w-95 max-w-lg  mr-auto ml-auto">
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
+      <Group position="left" mt="md">
+        <Button
+          className="w-16 mb-4"
+          onClick={() => setActivePage(1)}
+          variant="gradient"
+          gradient={{ from: "indigo.3", to: "cyan.3" }}
+        >
+          <IconRefresh />
+        </Button>
+      </Group>
       {displayMessages.map((message) => {
         return (
           <MessageCard

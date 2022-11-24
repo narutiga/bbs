@@ -26,7 +26,11 @@ export const MessageCard: FC<Props> = (props) => {
   return (
     <Paper withBorder radius="md" className="py-4 px-4 md:px-8 mb-4">
       <div className="flex justify-between mb-4">
-        <Text size="sm" color={colorScheme === "dark" ? "cyan.2" : "indigo.4"}>
+        <Text
+          size="md"
+          weight="500"
+          color={colorScheme === "dark" ? "cyan.2" : "indigo.4"}
+        >
           {props.guestName}
         </Text>
         <Text size="sm" color="dimmed">
@@ -34,7 +38,7 @@ export const MessageCard: FC<Props> = (props) => {
         </Text>
       </div>
       <Text
-        className="whitespace-pre-line"
+        className="text-lg sm:text-base whitespace-pre-line"
         color={colorScheme === "dark" ? "gray.4" : "gray.7"}
       >
         {props.title}
