@@ -1,6 +1,6 @@
 const requests = {
-  fetchCommentData: "https://kino-bbs-api.fly.dev/api/bbs",
-  InsertCommentData: "https://kino-bbs-api.fly.dev/api/bbs",
+  fetchCommentData: process.env.NEXT_PUBLIC_API_URL as string,
+  InsertCommentData: process.env.NEXT_PUBLIC_API_URL as string,
 };
 
 export default requests;
