@@ -22,23 +22,21 @@ export const HeaderMenu: FC = () => {
   const { classes } = useStyles();
 
   return (
-    <Header height={80} className=" px-0 w-full sticky top-0 z-50">
+    <Header height={80} className="min-w-100 px-0 w-full sticky top-0 z-50">
       <Container size={3000} px={20} className={classes.header}>
-        <Link href="/" className="no-underline">
-          <div className="flex hover:cursor-pointer">
-            <h1 className="my-auto ml-0 md:ml-4 font-semibold text-2xl md:text-3xl">
-              <Text
-                variant="gradient"
-                gradient={{ from: "indigo.3", to: "cyan.3", deg: 45 }}
-                sx={{ fontFamily: "Greycliff CF, sans-serif" }}
-                ta="center"
-                fw={700}
-              >
-                掲示板のようなもの
-              </Text>
-            </h1>
-          </div>
-        </Link>
+        <div className="flex">
+          <h1 className="my-auto ml-0 md:ml-4 font-semibold text-2xl md:text-3xl">
+            <Text
+              variant="gradient"
+              gradient={{ from: "indigo.3", to: "cyan.3", deg: 45 }}
+              sx={{ fontFamily: "Greycliff CF, sans-serif" }}
+              ta="center"
+              fw={700}
+            >
+              掲示板のようなもの
+            </Text>
+          </h1>
+        </div>
         <ToggleColorScheme />
       </Container>
     </Header>

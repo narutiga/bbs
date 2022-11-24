@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
+import { NextPage } from "next";
 import axios from "axios";
 import requests from "src/lib/Requests";
-import { MessageCard } from "src/component/MessageCard";
 import { MessageForm } from "src/component/MessageForm";
-import { useEffect, useMemo, useState } from "react";
+import { MessageCard } from "src/component/MessageCard";
 import { PaginationComponent } from "src/component/PaginationComponent";
-import { NextPage } from "next";
+import { Button, Group } from "@mantine/core";
+import { IconRefresh } from "@tabler/icons";
+import { ScrollToTop } from "src/component/ScrollToTop";
 
 /** @package */
 export type MessageData = {
@@ -36,24 +39,37 @@ export const Index: NextPage = () => {
     getMessageData();
   }, []);
 
-  const commentsPage = messages.slice(
+  const displayMessages = messages.slice(
     activePage * messagesPerPage - messagesPerPage,
     activePage * messagesPerPage
   );
 
   return (
-    <div className="w-4/5 max-w-lg mr-auto ml-auto">
+    <div className="px-4 w-5/6 md:w-4/5 min-w-95 max-w-lg  mr-auto ml-auto">
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
-      {commentsPage.map((comment) => {
+      <Group position="left" mt="md">
+        <Button
+          className="w-16 mb-4"
+          onClick={() => setActivePage(1)}
+          variant="gradient"
+          gradient={{ from: "indigo.3", to: "cyan.3" }}
+        >
+          <IconRefresh />
+        </Button>
+      </Group>
+      {displayMessages.map((message) => {
         return (
           <MessageCard
-            key={comment.id}
-            guestName={comment.guestName}
-            postedAt={comment.createdAt}
-            title={comment.title}
+            key={message.id}
+            guestName={message.guestName}
+            postedAt={message.createdAt}
+            title={message.title}
           />
         );
       })}
+      {/* <div className="fixed bottom-52 right-4 sm:right-8 md:right-16">
+        <ScrollToTop />
+      </div> */}
       <div className="text-center">
         <PaginationComponent
           messagesCount={messages.length}
