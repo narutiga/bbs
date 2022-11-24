@@ -46,7 +46,7 @@ export const Index: NextPage = () => {
   );
 
   return (
-    <div className="w-4/5 min-w-95 max-w-lg  mr-auto ml-auto">
+    <div className="w-4/5 max-w-lg mr-auto ml-auto">
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
       <Group position="left" mt="md">
         <Button
