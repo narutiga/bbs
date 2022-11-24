@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NextPage } from "next";
 import axios from "axios";
 import requests from "src/lib/Requests";
@@ -25,17 +25,18 @@ export const Index: NextPage = () => {
   const [messages, setMessages] = useState<MessageData[]>([]);
   const [activePage, setActivePage] = useState<number>(1);
 
+  const getMessageData = useCallback(() => {
+    axios
+      .get(requests.fetchCommentData)
+      .then((res) => {
+        setMessages(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   useEffect(() => {
-    const getMessageData = () => {
-      axios
-        .get(requests.fetchCommentData)
-        .then((res) => {
-          setMessages(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
     getMessageData();
   }, []);
 
@@ -45,12 +46,12 @@ export const Index: NextPage = () => {
   );
 
   return (
-    <div className="px-4 w-5/6 md:w-4/5 min-w-95 max-w-lg  mr-auto ml-auto">
+    <div className="w-4/5 min-w-95 max-w-lg  mr-auto ml-auto">
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
       <Group position="left" mt="md">
         <Button
           className="w-16 mb-4"
-          onClick={() => setActivePage(1)}
+          onClick={() => getMessageData()}
           variant="gradient"
           gradient={{ from: "indigo.3", to: "cyan.3" }}
         >
