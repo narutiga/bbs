@@ -14,6 +14,10 @@ module.exports = {
       lg: "1200px",
       xl: "1400px",
     },
+    minWidth: {
+      95: "380px",
+      100: "400px",
+    },
     extend: {},
   },
   plugins: [],

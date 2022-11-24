@@ -7,6 +7,7 @@ import { MessageCard } from "src/component/MessageCard";
 import { PaginationComponent } from "src/component/PaginationComponent";
 import { Button, Group } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons";
+import { ScrollToTop } from "src/component/ScrollToTop";
 
 /** @package */
 export type MessageData = {
@@ -66,6 +67,9 @@ export const Index: NextPage = () => {
           />
         );
       })}
+      {/* <div className="fixed bottom-52 right-4 sm:right-8 md:right-16">
+        <ScrollToTop />
+      </div> */}
       <div className="text-center">
         <PaginationComponent
           messagesCount={messages.length}
