@@ -59,7 +59,7 @@ export const MessageForm: FC<Props> = (props) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto" mt="0">
+    <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto" my="0">
       <form onSubmit={form.onSubmit(handleSubmitMessage)}>
         <TextInput
           required
