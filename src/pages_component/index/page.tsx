@@ -50,7 +50,7 @@ export const Index: NextPage = () => {
       <MessageForm setMessages={setMessages} setActivePage={setActivePage} />
       <Group position="left" mt="md">
         <Button
-          className="w-16 mb-4"
+          className="w-16 mt-4 mb-4"
           onClick={() => getMessageData()}
           variant="gradient"
           gradient={{ from: "indigo.3", to: "cyan.3" }}
