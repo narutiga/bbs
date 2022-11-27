@@ -2,7 +2,14 @@ import { Dispatch, FC, SetStateAction } from "react";
 import axios from "axios";
 import requests from "src/lib/Requests";
 import { MessageData } from "src/pages_component/index/page";
-import { Box, Button, Group, Textarea, TextInput } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Group,
+  MantineProvider,
+  Textarea,
+  TextInput,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useLocalStorage } from "@mantine/hooks";
 
@@ -59,34 +66,58 @@ export const MessageForm: FC<Props> = (props) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto" my="0">
-      <form onSubmit={form.onSubmit(handleSubmitMessage)}>
-        <TextInput
-          required
-          label="お名前"
-          placeholder="name"
-          size="md"
-          {...form.getInputProps("guestName")}
-        />
-        <Textarea
-          required
-          label="コメント"
-          placeholder="comment"
-          autosize
-          minRows={2}
-          size="md"
-          {...form.getInputProps("title")}
-        />
-        <Group position="right" mt="md">
-          <Button
-            type="submit"
-            variant="gradient"
-            gradient={{ from: "indigo.3", to: "cyan.3" }}
-          >
-            投稿
-          </Button>
-        </Group>
-      </form>
-    </Box>
+    <MantineProvider
+      inherit
+      theme={{
+        focusRingStyles: {
+          inputStyles: (theme) => ({
+            outline: `1px solid ${
+              theme.colorScheme === "dark"
+                ? theme.colors.cyan[3]
+                : theme.colors.indigo[4]
+            }`,
+          }),
+        },
+        components: {
+          InputWrapper: {
+            styles: (theme) => ({
+              label: {
+                text: theme.colorScheme === "dark" ? "gray.4" : "gray.7",
+              },
+            }),
+          },
+        },
+      }}
+    >
+      <Box sx={{ maxWidth: 300, margin: 100 }} mx="auto" my="0">
+        <form onSubmit={form.onSubmit(handleSubmitMessage)}>
+          <TextInput
+            required
+            label="お名前"
+            placeholder="name"
+            size="md"
+            {...form.getInputProps("guestName")}
+          />
+          <Textarea
+            required
+            label="コメント"
+            placeholder="comment"
+            autosize
+            minRows={2}
+            size="md"
+            {...form.getInputProps("title")}
+          />
+          <Group position="right" mt="md">
+            <Button
+              type="submit"
+              variant="gradient"
+              gradient={{ from: "indigo.3", to: "cyan.3" }}
+            >
+              投稿
+            </Button>
+          </Group>
+        </form>
+      </Box>
+    </MantineProvider>
   );
 };
