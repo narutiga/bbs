@@ -68,9 +68,9 @@ export const Index: NextPage = () => {
           />
         );
       })}
-      <div className="fixed bottom-52 right-4 sm:right-8 md:right-16">
+      {/* <div className="fixed bottom-16 right-4 sm:right-8 md:right-16">
         <ScrollToTop />
-      </div>
+      </div> */}
       <div className="text-center">
         <PaginationComponent
           messagesCount={messages.length}
