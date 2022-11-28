@@ -9,7 +9,7 @@ export const ScrollToTop: FC = () => {
 
   return (
     <Affix position={{ bottom: 20, right: 20 }}>
-      <Transition transition="slide-up" mounted={scroll.y > 0}>
+      <Transition transition="slide-up" mounted={scroll.y > 200}>
         {(transitionStyles) => (
           <Button
             onClick={() => scrollTo({ y: 0 })}
