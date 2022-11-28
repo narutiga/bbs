@@ -71,7 +71,8 @@ export const MessageForm: FC<Props> = (props) => {
       theme={{
         focusRingStyles: {
           inputStyles: (theme) => ({
-            outline: `1px solid ${
+            outline: "none",
+            border: `1px solid ${
               theme.colorScheme === "dark"
                 ? theme.colors.cyan[3]
                 : theme.colors.indigo[4]
@@ -82,7 +83,13 @@ export const MessageForm: FC<Props> = (props) => {
           InputWrapper: {
             styles: (theme) => ({
               label: {
-                text: theme.colorScheme === "dark" ? "gray.4" : "gray.7",
+                color: theme.colorScheme === "dark" ? "gray.4" : "gray.7",
+                span: {
+                  color:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.cyan[3]
+                      : theme.colors.indigo[4],
+                },
               },
             }),
           },
