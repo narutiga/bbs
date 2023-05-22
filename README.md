@@ -2,7 +2,7 @@
 
 掲示板のようなものです
 
-https://bbs-narutiga.vercel.app/
+https://bbs-opal.vercel.app/
 
 # 使い方
 
